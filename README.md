@@ -1,0 +1,2 @@
+# CSGOLucky
+A Phishing website
