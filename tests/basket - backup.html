@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<!--
+		wait for webpage to load
+		window minimising fade effect
+		change cursor, to arror
+		
+		change width
+		
+		prevent element from leaving the screen.
+		
+		display HTTPS sectificate
+		... at end of url
+		
+		-->
+		
+		<script>
+			function but_hover(n, is_hovering_over) {
+				if (is_hovering_over) {
+					document.getElementById("but_" + n).src = "img/b" + n + "_hover.png"
+				} else {
+					document.getElementById("but_" + n).src = "img/b" + n + ".png"
+				}
+			}
+			
+			function close_open_window(window_is_open) {
+				if (window_is_open) {
+					document.getElementById("popup_window").style.display = "none";
+				} else {
+					document.getElementById("popup_window").style.display = "block";
+					drag_element(document.getElementById("popup_window"));
+				}
+			}
+			
+			function resize_window() {
+				alert("hi");
+			}
+			
+			function select_url(is_select) {
+				if (is_select) {
+					document.getElementById("url_1").style.display = "none";
+					document.getElementById("url_2").style.display = "none";
+					document.getElementById("url_3").style.display = "none";
+					document.getElementById("url_4").style.display = "block";
+					document.getElementById("url_4").select();
+					
+				}
+			}
+			
+			setInterval(function(){
+				if (document.getElementById("popup_window").style.display == "block") {
+					if (document.activeElement !== document.getElementById("url_4")) {
+						document.getElementById("url_1").style.display = "block";
+						document.getElementById("url_2").style.display = "block";
+						document.getElementById("url_3").style.display = "block";
+						document.getElementById("url_4").style.display = "none";
+					}
+				}
+			}, 100);
+			
+			function open_cert(cert_is_open) {
+				if (cert_is_open) {
+					document.getElementById("https_cerf_container").style.display = "block";
+				} else {
+					document.getElementById("https_cerf_container").style.display = "none";
+				}
+			}
+			
+		</script>
+		
+		<script>
+			function drag_element(elm) {
+				p1=0, p2=0, p3=0, p4=0;
+				if (document.getElementById(elm.id + "_header")) {
+					document.getElementById(elm.id + "_header").onmousedown = drag_win_down;
+				} else {
+					elm.onmousedown = drag_win_down;
+				}
+			
+				function drag_win_down(e) {
+					e = e || window.event;
+					e.preventDefault();
+				
+					p3 = e.clientX;
+					p4 = e.clientY;
+					document.onmouseup = elm_drag_stop;
+					document.onmousemove = elm_drag;
+				}
+			
+				function elm_drag(e) {
+					e = e || window.event;
+					e.preventDefault();
+				
+					p1 = p3 - e.clientX;
+					p2 = p4 - e.clientY;
+					p3 = e.clientX;
+					p4 = e.clientY;
+				
+					elm.style.top = (elm.offsetTop -p2) + "px";
+					elm.style.left = (elm.offsetLeft - p1) + "px";
+				}
+			
+				function elm_drag_stop() {
+					document.onmouseup = null;
+					document.onmousemove = null;
+				}
+			}
+		</script>
+		
+		<style>
+			
+			body {
+				background-color: green;
+				overflow: hidden;
+			}
+		
+			.head_but {
+				width: 45px;
+				height: 29px;
+			}
+			
+			.head_but3 {
+				width: 45px;
+				height: 29px;
+			}
+			
+			#popup_window {
+				position: absolute;
+				z-index: 9;
+				background-color: white;
+				border: 0px;
+				display: none;
+				
+				padding: 0px;
+				width: 50em;
+				height: 30em;
+			}
+			
+			#popup_window_header {
+				padding: 0px;
+				margin: 0px;
+				cursor: move;
+				z-index: 10;
+				cursor: context-menu;
+				width: 100%;
+				user-select: none;
+			}
+			
+			.header_list {
+				list-style-type: none;
+				margin: 0px;
+				padding:0px;
+				overflow: hidden;
+				width: 100%;
+				height: 100%;
+			}
+			
+			.header_list_li {
+				float: left;
+			}
+			
+			.header_list li div {
+				display: block;
+				padding 0px;
+			}
+			
+			.popup_header_part_1 img {
+				padding-left: 5px;
+				padding-right: 5px;
+				padding-top: 5px;
+				pading-bottom: 0px;
+				
+				width: 16px;
+				height: 16px;
+			}
+			
+			.header_list_li_but_3 {
+				float: right;
+			}
+			
+			.popup_header_part_2 {
+				padding-left: 0px;
+				padding-right: 0px;
+				padding-top: 5px;
+				pading-bottom: 0px;
+				
+				font-family: "Segoe UI";
+				font-size: 12px;
+			}
+			
+			#border_con {
+				pading: 0px;
+				margin: 0px;
+				display: block;
+			}
+			
+			#border_con div {
+				float: left;
+			}
+			
+			#window_container {
+				width: 100%;
+				height: 100%;
+			}
+			
+			#window_border_bottom {
+				cursor: e-resize;
+			}
+			
+			#window_border_right {
+				cursor: e-resize;
+				width: 10px;
+			}
+			
+			#popup_window_body {
+				padding: 0;
+				margin: 0;
+				width: 99.5%;
+				height: 100%;
+			}
+			
+			#login_frame {
+				width: 100%;
+				height: 30em;
+			}
+			
+			#popup_window_url_bar {
+				border: 0px solid grey;
+				width: 99.5%;
+				overflow: hiden;
+			}
+			
+			#popup_window_url_bar ul {
+				list-style-type: none;
+				margin: 0;
+				padding: 0;
+				overflow: hidden;
+			}
+			
+			#popup_window_url_bar ul li {
+				float: left;
+			}
+			
+			#but_4 {
+				width: 143px;
+				height: 26px;
+				user-select: none;
+			}
+			
+			.https_url {
+				border: none;
+				margin: 0px;
+				font-family: "Segoe UI";
+				font-size: 14px;
+				outline-width: 0px;
+				
+				padding-left: 0px;
+				padding-right: 0px;
+				padding-top: 0.3em;
+				padding-bottom: 0px;
+			}
+			
+			#url_1 {
+				color: green;
+				width: 2.25em;
+			}
+			
+			#url_2 {
+				color: grey;
+				width: 43.4em;
+			}
+			
+			#url_3 {
+				color: grey;
+				width: 0.8em;
+			}
+			
+			#url_4 {
+				display: none;
+				width: 46em;
+			}
+			
+			.cert_title {
+				color: green;
+				font-family: "Segoe UI";
+				font-size: 15px;
+			}
+	
+			#https_cerf {
+				width: 100%;
+				height: 100%;
+				padding: 15px;
+				background-color: white;
+				border: 1px solid grey;
+			}
+			
+			#https_cerf_container {
+				padding-left: 0px;
+				padding-right: 0px;
+				padding-top: 60px;
+				padding-bottom: 0px;
+				
+				width: 280px;
+				height: 100px;
+				user-select: none;
+				position: absolute;
+				display: none;
+				
+			}
+	
+			.close_button {
+				value: X;
+				float: right;
+				padding: 0px;
+				margin: 0px;
+			}
+	
+			.cert_body {
+				font-family: "Segoe UI";
+				font-size: 11px;
+			}
+			
+			
+		</style>
+		
+	</head>
+	
+	<body>
+		
+		<div id="popup_window">
+			<div id="border_con">
+			
+				<div id="window_container">
+					<div id="popup_window_header">
+						<ul class="header_list">
+							<li class="header_list_li">
+								<div class="popup_header_part_1">
+									<img src="img/favicon.ico"></img>
+								</div>
+							</li>
+							<li class="header_list_li">
+								<div class="popup_header_part_2">
+									<span>Steam Community</span>
+								</div>
+							</li>
+							<li class="header_list_li_but_3">
+								<div class="popup_header_part_3">
+									<img class="head_but" id="but_1" src="img/b1.png" onmouseover="but_hover(1, true);" onmouseout="but_hover(1, false);" onclick="close_open_window(true);"></img>
+									<img class="head_but" id="but_2" src="img/b2.png" onmouseover="but_hover(2, true);" onmouseout="but_hover(2, false);"></img>
+									<img class="head_but3" id="but_3" src="img/b3.png" onmouseover="but_hover(3, true);" onmouseout="but_hover(3, false);" onclick="close_open_window(true);"></img>
+								</div>
+							</li>
+						</ul>
+					</div>
+					
+					<div id="popup_window_url_bar">
+						<ul>
+							<li><img class="https_img" id="but_4" onclick="open_cert(true)" src="img/b4.png" onmouseover="but_hover(4, true);" onmouseout="but_hover(4, false);"></img></li>
+							<li><input class="https_url" id="url_1" onclick="select_url(true)" value="https"></input></li>
+							<li><input class="https_url" id="url_2" onclick="select_url(true)" value="://steamcommunity.com/openid/login?openid.ns=http%3A%2F%2Fspecs.openid.net%2Fauth%2F2.0&openid.mode=checkid_setup&openid.return_to=https%3A%2F%2Fcompletionist.me%2Fauth%2Fsteam%2Fcallback&openid.realm=https%3A%2F%2Fcompletionist.me&openid.ns.sreg=http%3A%2F%2Fopenid.net%2Fextensions%2Fsreg%2F1.1&openid.claimed_id=http%3A%2F%2Fspecs.openid.net%2Fauth%2F2.0%2Fidentifier_select&openid.identity=http%3A%2F%2Fspecs.openid.net%2Fauth%2F2.0%2Fidentifier_select"></input></li>
+							<li><input class="https_url" id="url_3" onclick="select_url(true)" value="..."></input></li>
+							<li><input class="https_url" id="url_4" value="https://steamcommunity.com/openid/login?openid.ns=http%3A%2F%2Fspecs.openid.net%2Fauth%2F2.0&openid.mode=checkid_setup&openid.return_to=https%3A%2F%2Fcompletionist.me%2Fauth%2Fsteam%2Fcallback&openid.realm=https%3A%2F%2Fcompletionist.me&openid.ns.sreg=http%3A%2F%2Fopenid.net%2Fextensions%2Fsreg%2F1.1&openid.claimed_id=http%3A%2F%2Fspecs.openid.net%2Fauth%2F2.0%2Fidentifier_select&openid.identity=http%3A%2F%2Fspecs.openid.net%2Fauth%2F2.0%2Fidentifier_select"></input></li>
+						</ul>
+					</div>
+					
+					<div id="https_cerf_container">
+						<div id="https_cerf">
+							<span class="cert_title">Connection is secure</span>
+							<img class="close_button" src="img/b5.png" id="but_5" onclick="open_cert(false)" onmouseover="but_hover(5, true)" onmouseout="but_hover(5, false)"></img><br></br>
+							<span class="cert_body">Your information (for example, passwords or credit card numbers) is private when it is sent to this site.</span>
+						</div>
+					</div>
+				
+					<div id="popup_window_body">
+						<iframe src="login.html" id="login_frame" onclick="select_url(true)">
+						</iframe>
+					</div>
+					
+				</div>
+				<div id="window_border_right" onmouseover="" onmouseout=""></div>
+				
+			</div>
+			
+			<div id="window_border_bottom" onmouseover="" onmouseout=""></div>
+				
+		</div>
+		
+		
+		<div><button onclick="close_open_window(false);">Click</button></div>
+		
+	</body>
+</html>

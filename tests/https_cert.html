@@ -1,0 +1,48 @@
+<script>
+	function close_certf() {
+		
+	}
+</script>
+
+<style>
+
+	body {
+		background-color: grey;
+	}
+
+	.cert_title {
+		color: green;
+		font-family: "Segoe UI";
+		font-size: 15px;
+	}
+	
+	#https_cerf {
+		width: 350px;
+		height: 100px;
+		background-color: white;
+		padding: 20px;
+		user-select: none;
+		position: absolute;
+	}
+	
+	.close_button {
+		value: X;
+		float: right;
+		padding: 0px;
+		margin: 0px;
+	}
+	
+	.cert_body {
+		font-family: Arial;
+		font-size: 15px;
+	}
+	
+</style>
+
+<div id="https_cerf">
+	<span class="cert_title">Connection is secure</span>
+	<img class="close_button" src="img/b4.png" onclick="javascript:document.getElementById('https_cerf').style.display = 'none'"></img><br></br>
+	<span class="cert_body">Your information (for example, passwords or credit card numbers) is private when it is sent to this site.</span>
+</div>
+
+<iframe src="google.com" width="800px;" height="500px;"></iframe>

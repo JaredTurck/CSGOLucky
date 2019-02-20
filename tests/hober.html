@@ -1,0 +1,11 @@
+<script>
+	function but_hover(n, hover_over) {
+		if (hover_over) {
+			document.getElementById("but_" + n).src = "img/b" + n + "_hover.png"
+		} else {
+			document.getElementById("but_" + n).src = "img/b" + n + ".png"
+		}
+	}
+</script>
+
+<img id="but_1" src="img/b1.png" onmouseover="but_hover(1, true);" onmouseout="but_hover(1, false)">

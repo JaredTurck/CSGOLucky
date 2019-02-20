@@ -1,0 +1,4 @@
+webpages:
+- display game page, add game to basket (product free)
+- display basket, you must sign in through Steam to purchase this product
+- display popup window
