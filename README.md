@@ -1,2 +1,2 @@
 # CSGOLucky
-A Phishing website
+An example phishing website
